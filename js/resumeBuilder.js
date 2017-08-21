@@ -13,11 +13,11 @@ var bio = {
     "biopic" : "images/logo.jpeg",
     display : function(){
         $("#header").prepend(HTMLheaderName.replace("%data%", bio.name) + HTMLheaderRole.replace("%data%", bio.role));
-        $("#topContacts, #footerContacts").append(HTMLmobile.replace("%data%", bio.contacts['mobile']))
-        $("#topContacts, #footerContacts").append(HTMLemail.replace("%data%", bio.contacts['email']));
-        $("#topContacts, #footerContacts").append(HTMLgithub.replace("%data%", bio.contacts['github']));
-        $("#topContacts, #footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts['twitter']));
-        $("#topContacts,#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts['location']));
+        $("#topContacts, #footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $("#topContacts, #footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+        $("#topContacts, #footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $("#topContacts, #footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+        $("#topContacts,#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
         $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
         var allskills ="";
         for (var i=0; i < bio.skills.length; i++)
@@ -72,10 +72,10 @@ var education = {
         $("#education").append(HTMLschoolStart);
         $(".education-entry").append(allshools);
         var allOnlineCourses = "";
-        for (var i=0 ; i < education.onlineCourses.length; i++){
-            allOnlineCourses += HTMLonlineTitle.replace("%data%",education.onlineCourses[i].title)+
-                HTMLonlineSchool.replace("%data%",education.onlineCourses[i].school)+
-                HTMLonlineDates.replace("%data%",education.onlineCourses[i].dates)+"<br>";
+        for (var j=0 ; j < education.onlineCourses.length; j++){
+            allOnlineCourses += HTMLonlineTitle.replace("%data%",education.onlineCourses[j].title)+
+                HTMLonlineSchool.replace("%data%",education.onlineCourses[j].school)+
+                HTMLonlineDates.replace("%data%",education.onlineCourses[j].dates)+"<br>";
         }
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
@@ -135,13 +135,13 @@ var work = {
 
         }
         var allprojects = "";
-        for (var i=0 ; i < work.projects.length ; i++){
-            allprojects += HTMLprojectTitle.replace("%data%", work.projects[i].title)+
-                HTMLprojectDates.replace("%data%", work.projects[i].dates)+
-                HTMLprojectDescription.replace("%data%", work.projects[i].description);
+        for (var c=0 ; c < work.projects.length ; c++){
+            allprojects += HTMLprojectTitle.replace("%data%", work.projects[c].title)+
+                HTMLprojectDates.replace("%data%", work.projects[c].dates)+
+                HTMLprojectDescription.replace("%data%", work.projects[c].description);
             var allimages = "";
             for (var j=0 ; j < work.projects[j].images.length ; j++){
-                allimages += HTMLprojectImage.replace("%data%",work.projects[i].images[j]);}
+                allimages += HTMLprojectImage.replace("%data%",work.projects[c].images[j]);}
             allprojects +=  allimages;
         }
 
