@@ -104,6 +104,21 @@ var work = {
             description: "Building a website application for one of the incubator project",
         }
     ],
+    display : function() {
+        var alljobs = "";
+        for (var i=0 ; i < work.jobs.length ; i++){
+            alljobs += HTMLworkEmployer.replace("%data%", work.jobs[i].employer)+
+                HTMLworkTitle.replace("%data%", work.jobs[i].title)+
+                HTMLworkLocation.replace("%data%", work.jobs[i].location)+
+                HTMLworkDates.replace("%data%", work.jobs[i].dates)+
+                HTMLworkDescription.replace("%data%", work.jobs[i].description);
+
+        }
+        $("#workExperience").append(HTMLworkStart);
+        $(".work-entry").append(alljobs);
+    },
+};
+var projects = {
     "projects" : [
         {
             title: "Afkar system",
@@ -124,29 +139,17 @@ var work = {
             images: ["images/Portfiolio.png"],
         }
     ],
-    display : function() {
-        var alljobs = "";
-        for (var i=0 ; i < work.jobs.length ; i++){
-            alljobs += HTMLworkEmployer.replace("%data%", work.jobs[i].employer)+
-                HTMLworkTitle.replace("%data%", work.jobs[i].title)+
-                HTMLworkLocation.replace("%data%", work.jobs[i].location)+
-                HTMLworkDates.replace("%data%", work.jobs[i].dates)+
-                HTMLworkDescription.replace("%data%", work.jobs[i].description);
-
-        }
-        var allprojects = "";
-        for (var c=0 ; c < work.projects.length ; c++){
-            allprojects += HTMLprojectTitle.replace("%data%", work.projects[c].title)+
-                HTMLprojectDates.replace("%data%", work.projects[c].dates)+
-                HTMLprojectDescription.replace("%data%", work.projects[c].description);
+    display : function(){
+      var allprojects = "";
+        for (var c=0 ; c < projects.projects.length ; c++){
+            allprojects += HTMLprojectTitle.replace("%data%", projects.projects[c].title)+
+                HTMLprojectDates.replace("%data%", projects.projects[c].dates)+
+                HTMLprojectDescription.replace("%data%", projects.projects[c].description);
             var allimages = "";
-            for (var j=0 ; j < work.projects[j].images.length ; j++){
-                allimages += HTMLprojectImage.replace("%data%",work.projects[c].images[j]);}
+            for (var j=0 ; j < projects.projects[j].images.length ; j++){
+                allimages += HTMLprojectImage.replace("%data%",projects.projects[c].images[j]);}
             allprojects +=  allimages;
         }
-
-        $("#workExperience").append(HTMLworkStart);
-        $(".work-entry").append(alljobs);
         $("#projects").append(HTMLprojectStart);
         $(".project-entry").append(allprojects);
         $(".project-entry").children("img").attr("width","350");
@@ -156,4 +159,5 @@ var work = {
 bio.display();
 education.display();
 work.display();
+projects.display();
 $("#mapDiv").append(googleMap);
